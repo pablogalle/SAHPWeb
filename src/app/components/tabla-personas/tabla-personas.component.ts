@@ -20,7 +20,6 @@ export class TablaPersonasComponent implements OnInit {
   
   constructor(
     private personasService: PersonasService,
-    private editarPersonaModalComponent: EditarPersonaModalComponent
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +50,6 @@ export class TablaPersonasComponent implements OnInit {
 
   editarPersona(id: number) {
     this.personaSeleccionada = this.personas.find((p) => p.id === id)!;
-    this.editarPersonaModalComponent.abrirModal(); // Asegúrate de tener una referencia a tu componente modal
   }
 
   actualizarPersona(personaActualizada: Persona) {

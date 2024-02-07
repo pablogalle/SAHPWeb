@@ -1,12 +1,25 @@
 <!-- Campo de Búsqueda -->
-<input type="text" [(ngModel)]="nombreBusqueda" (keyup)="0" placeholder="Buscar por nombre...">
 
 
 <!-- Formulario para añadir nueva persona -->
-<div>
-  <input type="text" [(ngModel)]="nuevoNombre" placeholder="Nombre">
-  <input type="number" [(ngModel)]="nuevosPuntos" placeholder="Puntos">
-  <button (click)="agregarPersona(nuevoNombre, nuevosPuntos)">Añadir Persona</button>
+<div class="input-group mb-3 row p-3">
+  
+  <div class="col-12 pb-3">
+    <input class="search-input" type="text" [(ngModel)]="nombreBusqueda" (keyup)="0" placeholder="Buscar por nombre/ID...">
+  </div>
+
+  <div class="col pb-3">
+    <input type="text" [(ngModel)]="nuevoNombre" placeholder="Nombre">
+
+  </div>
+  <div class="col pb-3">
+    <input type="number" [(ngModel)]="nuevosPuntos" placeholder="Puntos">
+
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary add-btn" (click)="agregarPersona(nuevoNombre, nuevosPuntos)">Añadir Persona</button>
+
+  </div>
 </div>
 
 <table>
@@ -20,12 +33,13 @@
     <td>{{ persona.id }}</td>
     <td>{{ persona.nombre }}</td>
     <td>
-        <button (click)="decrementarPuntos(persona.id)">-</button>
+        <button class="btn btn-secondary" (click)="decrementarPuntos(persona.id)">-</button>
         {{ persona.puntos }}
-        <button (click)="incrementarPuntos(persona.id)">+</button>    
+        <button class="btn btn-secondary" (click)="incrementarPuntos(persona.id)">+</button>    
     </td>
     <td>
       <button
+        class="btn btn-warning"
         (click)="modificarPersona(persona.id, persona.nombre, persona.puntos)"
       >
         Modificar
