@@ -1,0 +1,37 @@
+<!-- Campo de Búsqueda -->
+<input type="text" [(ngModel)]="nombreBusqueda" (keyup)="0" placeholder="Buscar por nombre...">
+
+
+<!-- Formulario para añadir nueva persona -->
+<div>
+  <input type="text" [(ngModel)]="nuevoNombre" placeholder="Nombre">
+  <input type="number" [(ngModel)]="nuevosPuntos" placeholder="Puntos">
+  <button (click)="agregarPersona(nuevoNombre, nuevosPuntos)">Añadir Persona</button>
+</div>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Puntos</th>
+    <th>Acciones</th>
+  </tr>
+  <tr *ngFor="let persona of personasFiltradas">
+    <td>{{ persona.id }}</td>
+    <td>{{ persona.nombre }}</td>
+    <td>
+        <button (click)="decrementarPuntos(persona.id)">-</button>
+        {{ persona.puntos }}
+        <button (click)="incrementarPuntos(persona.id)">+</button>    
+    </td>
+    <td>
+      <button
+        (click)="modificarPersona(persona.id, persona.nombre, persona.puntos)"
+      >
+        Modificar
+      </button>
+    </td>
+  </tr>
+</table>
+
+<app-editar-persona-modal (personaEditando)="personaSeleccionada" (cambiosGuardados)="actualizarPersona($event)"></app-editar-persona-modal>
